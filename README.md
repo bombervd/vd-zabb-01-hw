@@ -1,5 +1,6 @@
 # Домашнее задание к занятию «Система мониторинга Zabbix» - Дорохов В.А.
 
+
 # Задание 1
 
 Установите Zabbix Server с веб-интерфейсом.
@@ -19,19 +20,20 @@
 <img src = "screens/zab1-t1-scr1.png" width = 100%>
 
 Команды:
-
-sudo -s
-wget https://repo.zabbix.com/zabbix/7.0/ubuntu/pool/main/z/zabbix-release/zabbix-release_latest_7.0+ubuntu22.04_all.deb
-dpkg -i zabbix-release_latest_7.0+ubuntu22.04_all.deb
-apt update
-apt install zabbix-server-pgsql zabbix-frontend-php php8.1-pgsql zabbix-apache-conf zabbix-sql-scripts zabbix-agent
-apt install postgresql
-sudo -u postgres createuser --pwprompt zabbix
-sudo -u postgres createdb -O zabbix zabbix
-zcat /usr/share/zabbix-sql-scripts/postgresql/server.sql.gz | sudo -u zabbix psql zabbix
-nano /etc/zabbix/zabbix_server.conf
-systemctl restart zabbix-server zabbix-agent apache2
-systemctl enable zabbix-server zabbix-agent apache2
+   ```bash
+   sudo -s
+   wget https://repo.zabbix.com/zabbix/7.0/ubuntu/pool/main/z/zabbix-release/zabbix-release_latest_7.0+ubuntu22.04_all.deb
+   dpkg -i zabbix-release_latest_7.0+ubuntu22.04_all.deb
+   apt update
+   apt install zabbix-server-pgsql zabbix-frontend-php php8.1-pgsql zabbix-apache-conf zabbix-sql-scripts zabbix-agent
+   apt install postgresql
+   sudo -u postgres createuser --pwprompt zabbix
+   sudo -u postgres createdb -O zabbix zabbix
+   zcat /usr/share/zabbix-sql-scripts/postgresql/server.sql.gz | sudo -u zabbix psql zabbix
+   nano /etc/zabbix/zabbix_server.conf
+   systemctl restart zabbix-server zabbix-agent apache2
+   systemctl enable zabbix-server zabbix-agent apache2
+   ```
 
 # Задание 2
 
@@ -56,16 +58,16 @@ systemctl enable zabbix-server zabbix-agent apache2
 <img src = "screens/zab1-t2-scr2.png" width = 100%>
 <img src = "screens/zab1-t2-scr3.png" width = 100%>
 
+Команды:
 
-Задание 3 со звёздочкой*
+   ```bash
+   sudo -s
+   wget https://repo.zabbix.com/zabbix/7.0/ubuntu/pool/main/z/zabbix-release/zabbix-release_latest_7.0+ubuntu22.04_all.deb
+   dpkg -i zabbix-release_latest_7.0+ubuntu22.04_all.deb
+   apt update
+   apt install zabbix-agent
+   nano /etc/zabbix/zabbix_agentd.conf 
+   systemctl restart zabbix-agent
+   systemctl enable zabbix-agent
+   ```
 
-Установите Zabbix Agent на Windows (компьютер) и подключите его к серверу Zabbix.
-Требования к результатам
-
-    Приложите в файл README.md скриншот раздела Latest Data, где видно свободное место на диске C:
-
-Критерии оценки
-
-    Выполнено минимум 2 обязательных задания
-    Прикреплены требуемые скриншоты и тексты
-    Задание оформлено в шаблоне с решением и опубликовано на GitHub
